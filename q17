@@ -1,0 +1,17 @@
+q17
+import nltk
+from nltk.corpus import wordnet
+
+# Ensure WordNet is downloaded
+nltk.download('wordnet')
+nltk.download('omw-1.4')  # Optional for extended WordNet features
+
+# Retrieve synsets
+word = "bank"
+synsets = wordnet.synsets(word)
+
+# Explore meanings
+for syn in synsets:
+    print(f"Definition: {syn.definition()}, Examples: {syn.examples()}")
+'''
+
