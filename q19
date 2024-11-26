@@ -1,0 +1,13 @@
+
+'''q19)
+from nltk.wsd import lesk
+from nltk.tokenize import word_tokenize
+
+# Example sentence
+sentence = "The bank can guarantee deposits will eventually cover future costs."
+word = "bank"
+
+# Perform Lesk
+sense = lesk(word_tokenize(sentence), word)
+print(f"Best sense: {sense.name()}, Definition: {sense.definition()}")
+'''
