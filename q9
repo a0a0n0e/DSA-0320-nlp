@@ -1,0 +1,15 @@
+q9
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.tag import RegexpTagger
+text = "John runs fast."
+tokens = word_tokenize(text)
+patterns = [
+    (r'.*ing$', 'VBG'),  # Verbs ending with 'ing'
+    (r'.*ed$', 'VBD'),   # Verbs ending with 'ed'
+    (r'.*s$', 'NNS'),    # Plural nouns
+    (r'^-?[0-9]+$', 'CD'),  # Numbers
+    (r'.*', 'NN')       # Default tag for other words
+]
+tagger = RegexpTagger(patterns)
+tags = tagger.tag(tokens)
