@@ -1,0 +1,8 @@
+'''q8
+from collections import Counter
+tagged_words = [("The", "DT"), ("dog", "NN"), ("barks", "VB"), ("cat", "NN")]
+word_tags = Counter(tag for,, word, tag in tagged_words)
+word = "dog"
+tag = word_tags.most_common(1)[0][0]  
+print(f"The tag for '{word}' is '{tag}'.")
+'''
