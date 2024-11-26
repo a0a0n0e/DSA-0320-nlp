@@ -1,0 +1,16 @@
+
+def recognize_dialog_act(sentence):
+    if sentence.lower().startswith(("how", "what", "why", "when", "where")):
+        return "Question"
+    elif sentence.lower().startswith(("please", "kindly")):
+        return "Request"
+    elif sentence.lower().startswith(("i think", "i believe")):
+        return "Statement"
+    else:
+        return "Other"
+
+dialog = ["How are you?", "Please pass the salt.", "I believe this is correct."]
+for utterance in dialog:
+    print(f"Utterance: '{utterance}' -> Dialog Act: {recognize_dialog_act(utterance)}")
+
+'''
