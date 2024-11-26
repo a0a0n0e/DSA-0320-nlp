@@ -1,0 +1,32 @@
+# Define a simple context-free grammar
+grammar = {
+    "S": [["NP", "VP"]],
+    "NP": [["Det", "N"]],
+    "VP": [["V", "NP"]],
+    "Det": ["the"],
+    "N": ["cat", "dog"],
+    "V": ["chased", "saw"]
+}
+
+def parse(tokens, rule="S"):
+    if not tokens:
+        return False
+    if rule not in grammar:
+        return tokens[0] == rule
+    for prod in grammar[rule]:
+        remaining = tokens
+        valid = True
+        for subrule in prod:
+            if remaining and (result := parse(remaining, subrule)):
+                remaining = remaining[1:] if isinstance(result, bool) else result
+            else:
+                valid = False
+                break
+        if valid:
+            return remaining
+    return False
+
+# Example usage
+sentence = "the cat chased the dog".split()
+print("Parsed successfully!" if parse(sentence) == [] else "Parse failed.")
+'''
