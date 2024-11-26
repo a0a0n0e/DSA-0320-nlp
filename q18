@@ -1,0 +1,9 @@
+q18
+def parse_fopc(expression):
+    components = expression.replace("(", "").replace(")", "").split()
+    print("Parsed Logical Components:")
+    for comp in components:
+        print(comp)
+fopc_expression = "forall(x) loves(x, ice_cream)"
+parse_fopc(fopc_expression)
+'''
