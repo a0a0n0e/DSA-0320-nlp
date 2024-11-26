@@ -1,0 +1,24 @@
+import nltk
+from nltk import CFG, ChartParser
+
+# Define a context-free grammar
+grammar = CFG.fromstring("""
+  S -> NP VP
+  NP -> Det N
+  VP -> V NP
+  Det -> 'the' | 'a'
+  N -> 'cat' | 'dog'
+  V -> 'chased' | 'saw'
+""")
+
+# Create a parser
+parser = ChartParser(grammar)
+
+# Input sentence
+sentence = ['the', 'dog', 'chased', 'the', 'cat']
+
+# Parse and display parse tree
+for tree in parser.parse(sentence):
+    tree.pretty_print()
+
+'''
