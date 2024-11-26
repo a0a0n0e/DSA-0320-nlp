@@ -1,0 +1,23 @@
+from nltk.parse import EarleyChartParser
+from nltk import CFG
+
+# Define a context-free grammar
+grammar = CFG.fromstring("""
+  S -> NP VP
+  NP -> Det N
+  VP -> V NP
+  Det -> 'the' | 'a'
+  N -> 'cat' | 'dog'
+  V -> 'chased' | 'saw'
+""")
+
+# Create an Earley parser
+parser = EarleyChartParser(grammar)
+
+# Input sentence
+sentence = ['the', 'cat', 'saw', 'a', 'dog']
+
+# Parse and display results
+for tree in parser.parse(sentence):
+    print(tree)
+'''
