@@ -1,0 +1,17 @@
+'''
+q10
+import nltk
+from nltk.tag import RegexpTagger
+nltk.download('punkt')
+text = "John runs fast."
+tokens = nltk.word_tokenize(text)
+patterns = [
+    (r'.*ing$', 'VBG'),
+    (r'.*ed$', 'VBD'),
+    (r'.*s$', 'NNS'),
+    (r'^-?[0-9]+$', 'CD'),
+    (r'.*', 'NN')
+]
+tagger = RegexpTagger(patterns)
+tags = tagger.tag(tokens)
+print("POS Tags:", tags)
