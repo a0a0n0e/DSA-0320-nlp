@@ -1,0 +1,19 @@
+q20)
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Sample documents
+docs = [
+    "The sky is blue and beautiful.",
+    "Love this blue and bright sky!",
+    "The quick brown fox jumps over the lazy dog."
+]
+
+# Compute TF-IDF
+vectorizer = TfidfVectorizer()
+tfidf_matrix = vectorizer.fit_transform(docs)
+
+# Display TF-IDF scores
+print("Feature Names:", vectorizer.get_feature_names_out())
+print("TF-IDF Matrix:\n", tfidf_matrix.toarray())
+
+'''
