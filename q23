@@ -1,0 +1,23 @@
+import spacy
+def evaluate_coherence(text):
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)
+    sentences = list(doc.sents)
+    if len(sentences) < 2:
+        print("The text must contain at least two sentences for coherence evaluation.")
+        return 0.0
+    similarities = []
+    for i in range(len(sentences) - 1):
+        similarity = sentences[i].similarity(sentences[i + 1])
+        similarities.append(similarity)
+    average_coherence = sum(similarities) / len(similarities)
+    return average_coherence
+if _name_ == "_main_":
+    sample_text = (
+        "The sun was setting over the horizon, painting the sky in hues of orange and pink. "
+        "Birds chirped softly as they settled into their nests. "
+        "The gentle breeze carried the scent of blooming flowers."
+    )
+    coherence_score = evaluate_coherence(sample_text)
+    print(f"Coherence Score: {coherence_score:.2f}")
+
