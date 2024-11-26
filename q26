@@ -1,0 +1,17 @@
+from transformers import pipeline
+
+def translate_to_french(text):
+    # Use the PyTorch backend to avoid TensorFlow issues
+    translator = pipeline("translation_en_to_fr", model="Helsinki-NLP/opus-mt-en-fr", framework="pt")
+    translated_text = translator(text, max_length=50)
+    return translated_text[0]['translation_text']
+
+if __name__ == "__main__":
+    # Example text for translation
+    english_text = "Hello, how are you? I hope you are enjoying your day!"
+    french_translation = translate_to_french(english_text)
+    
+    print("Original Text (English):")
+    print(english_text)
+    print("\nTranslated Text (French):")
+    print(french_translation)
