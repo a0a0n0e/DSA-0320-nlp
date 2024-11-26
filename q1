@@ -1,0 +1,9 @@
+import re
+text = "Python is powerful. Python is fun!"
+pattern = r"Python"
+matches = re.findall(pattern, text)
+print("Matches found:", matches)
+if re.search(r"fun", text):
+    print("The word 'fun' is present in the text.")
+replaced_text = re.sub(r"Python", "Programming", text)
+print("Replaced text:", replaced_text)
