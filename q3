@@ -1,0 +1,16 @@
+import nltk
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+
+# Sample sentence
+sentence = "The quick brown fox jumps over the lazy dog."
+
+# Tokenize the sentence
+tokens = nltk.word_tokenize(sentence)
+
+# Perform morphological analysis
+morph_analysis = nltk.pos_tag(tokens)
+
+print("Morphological Analysis:")
+for word, tag in morph_analysis:
+    print(f"{word}: {tag}")
