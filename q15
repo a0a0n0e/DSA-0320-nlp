@@ -1,0 +1,21 @@
+q5)
+from nltk import PCFG
+from nltk.parse import ViterbiParser
+
+# Define a probabilistic context-freesa grammar
+grammar = PCFG.fromstring("""
+  S -> NP VP [1.0]
+  NP -> Det N [0.6] | 'John' [0.4]
+  VP -> V NP [1.0]
+  Det -> 'the' [1.0]
+  N -> 'dog' [0.8] | 'cat' [0.2]
+  V -> 'chased' [1.0]
+""")
+
+# Create a parser
+parser = ViterbiParser(grammar)
+
+# Parse the sentence
+sentence = ['John', 'chased', 'the', 'dog']
+for tree in parser.parse(sentence):
+    print(tree)
